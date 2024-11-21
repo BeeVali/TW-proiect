@@ -51,40 +51,56 @@
 
     <!--Continut principal modele Porsche-->
     <div class="principal-content">
-        <header>
             <h2>Selectati un model pentru configurare</h2>
             <div class="models">
-                <div class="718-cayman">
+                <div class="model-item"> 
                     <h2>718</h2>
                     <p>Masina cu motor central</p>
-                    <button>Benzina</button>
-                    <img src="./imagini/porsche-718-cayman-s.webp">
+                    <button class="fuel-buttons">Benzina</button>
+                    <img src="./imagini/718-lateral.webp">
                     <p>De la 171.853,85 $</p>
+                    <div class="next/prev">
+                        <button class="prev">←</button>
+                        <button class="next">→</button>
+                    </div>
                 </div>
-                <div class="911">
+                <div class="model-item">
                     <h2>911</h2>
                     <p>Masina cu motor pe spate</p>
-                    <button>Benzina</button>
-                    <img src="./imagini/911-turbo.avif" height="100">
+                    <button class="fuel-buttons">Benzina</button>
+                    <img src="./imagini/911-lateral.webp" height="100">
                     <p>De la 135.241,12 $</p>
+                    <div class="next/prev">
+                        <button class="prev">←</button>
+                        <button class="next">→</button>
+                    </div>
                 </div>
-                <div class="Taycan">
+                <div class="model-item">
                     <h2>Taycan</h2>
                     <p>Expresia pura a unei masini electrice</p>
-                    <button>Electric</button>
-                    <img src="./imagini/porsche_taycan.webp">
+                    <button class="fuel-buttons">Electric</button>
+                    <img src="./imagini/taycan-lateral.webp">
                     <p>De la 107.115,00 $</p>
+                    <div class="next/prev">
+                        <button class="prev">←</button>
+                        <button class="next">→</button>
+                    </div>
                 </div>
-                <div class="Panamera">
+                <div class="model-item">
                     <h2>Panamera</h2>
                     <p>Masina sport cu design elegant</p>
-                    <button>Benzina</button>
-                    <button>Electric</button>
-                    <img src="./imagini/porsche_panamera.webp">
+                <div class="fuel-buttons-container">
+                    <button class="fuel-buttons">Benzina</button>
+                <button class="fuel-buttons">Electric</button>
+                </div>
+                    <img src="./imagini/panamera-lateral.webp">
                     <p>De la 118.443,0$</p>
+                    <div class="next/prev">
+                        <button class="prev">←</button>
+                        <button class="next">→</button>
+                    </div>
                 </div>
             </div>
-        </header>
     </div>
 
     <!--Sprijin alegere model-->
@@ -101,14 +117,18 @@
 <div class="recenzii">
     <h3>Cat de utile sunt informatiile prezentate la selectarea unei serii de modele?</h3>
     <div class="recenzie-buttons">
-        <button class="recenzie-button">1</button>
-        <button class="recenzie-button">2</button>
-        <button class="recenzie-button">3</button>
-        <button class="recenzie-button">4</button>
-        <button class="recenzie-button">5</button>
+        <button onclick="redirectToExperientaPorsche()" class="recenzie-button">1</button>
+        <button onclick="redirectToExperientaPorsche()" class="recenzie-button">2</button>
+        <button onclick="redirectToExperientaPorsche()" class="recenzie-button">3</button>
+        <button onclick="redirectToExperientaPorsche()" class="recenzie-button">4</button>
+        <button onclick="redirectToExperientaPorsche()" class="recenzie-button">5</button>
     </div>
 </div>
-
+<script>
+    function redirectToExperientaPorsche() {
+        window.location.href = './experienta_porsche.html';
+    }
+</script>
 
     <!--Regiunea/Formular contact-->
 <div class="reg-form">
