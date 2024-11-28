@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervare Test-Drive Porsche</title>
+    <link rel="stylesheet" href="test_drive.css">
+    <!-- Include flatpickr CSS. Acesta ma ajuta sa inversez ziua cu luna la "Data dorita pentru test-drive" -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+
+<body>
+    <footer class="porsche-footer hidden">
+        <h1>Testeaza Porsche</h1>
+        <p>Esti pasionat de performanta si design? Descopera gama Porsche!</p>
+        <p>Inscrie-te la un test drive si experimenteaza inovatia si excelenta oferite de modelele noastre.</p>
+        <p>Alege modelul preferat si simte diferenta pe care doar Porsche o poate oferi.</p>
+    </footer>
+
+    <div class="main-content">
+    <h1>Rezervare Test-Drive Porsche</h1>
+    <form action="submit_reservation.php" method="POST">
+
+        <label for="name">Nume complet:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Telefon:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="model">Selectati modelul Porsche:</label>
+        <select id="model" name="model" onchange="updateFuelOptions()" required>
+            <option value="">Selectati un model</option>
+            <option value="1">Porsche 718</option>
+            <option value="2">Porsche 911</option>
+            <option value="3">Porsche Taycan</option>
+            <option value="4">Porsche Panamera</option>
+            <option value="5">Porsche Macan</option>
+            <option value="6">Porsche Cayenne</option>
+        </select>
+
+        <label for="fuel">Tip combustie:</label>
+        <select id="fuel" name="fuel" required>
+            <option value="">Selectati tipul de combustie</option>
+        </select>
+
+        <label for="date">Data dorita pentru test-drive:</label>
+        <input type="date" id="date" name="date" required>
+        <label for="message">Mesaj optional:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Adaugati detalii suplimentare...(ne va ajuta sa filtram mai usor cererile)"></textarea>
+
+        <div class="button-container">
+            <button class="test-drive" onclick="window.location.href='index.html'">Revenire la pagina principală</button>
+            <button class="test-drive">Rezervă Test-Drive</button>
+        </div>
+    </form>
+    </div>
+
+    <script>
+        const fuelOptions = {
+            1: [{ id: 1, type: 'Benzina' }],                                // Porsche 718
+            2: [{ id: 1, type: 'Benzina' }],                                // Porsche 911
+            3: [{ id: 2, type: 'Electric' }],                               // Porsche Taycan
+            4: [{ id: 1, type: 'Benzina' }, { id: 2, type: 'Electric' }],   // Porsche Panamera
+            5: [{ id: 2, type: 'Electric' }],                               // Porsche Macan
+            6: [{ id: 1, type: 'Benzina' }, { id: 3, type: 'Hibrid' }]      // Porsche Cayenne
+        };
+
+        function updateFuelOptions() {
+            const modelSelect = document.getElementById('model');
+            const fuelSelect = document.getElementById('fuel');
+            const selectedModel = modelSelect.value;
+
+            // aceasta functie goleste optiunile existente
+            fuelSelect.innerHTML = '<option value="">--Selectați tipul de combustie--</option>';
+
+            // aceasta functie imi adauga optiunile relevante in functie de fiecare model (fiecare are tipurile diferite de combustie)
+            if (fuelOptions[selectedModel]) {
+                fuelOptions[selectedModel].forEach(option => {
+                    const newOption = document.createElement('option');
+                    newOption.value = option.id;
+                    newOption.textContent = option.type;
+                    fuelSelect.appendChild(newOption);
+                });
+            }
+        }
+         flatpickr("#date", {
+                dateFormat: "d/m/Y",  // Formatul dorit: zi/lună/an
+            });
+    </script>
+</body>
+
+</html>

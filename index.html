@@ -51,13 +51,16 @@
 
     <!--Continut principal modele Porsche-->
     <div class="principal-content">
-            <h2>Selectati un model pentru configurare</h2>
+            <h2>Selectati un model pentru mai multe detalii</h2>
             <div class="models">
                 <div class="model-item"> 
                     <h2>718</h2>
                     <p>Masina cu motor central</p>
                     <button class="fuel-buttons">Benzina</button>
+                  <div class="image-container">
                     <img src="./imagini/718-lateral.webp">
+                    <img src="./imagini/718-frontal.webp" style="display:none;">
+                  </div>
                     <p>De la 171.853,85 $</p>
                     <div class="next/prev">
                         <button class="prev">←</button>
@@ -100,16 +103,79 @@
                         <button class="next">→</button>
                     </div>
                 </div>
+                <div class="model-item">
+                    <h2>Macan</h2>
+                    <p>Masina sport a SUV-urilor compacte</p>
+                    <div class="fuel-buttons-container">
+                        <button class="fuel-buttons">Electric</button>
+                    </div>
+                    <img src="./imagini/macan-lateral.webp">
+                    <p>De la 84.050,89$</p>
+                    <div class="next/prev">
+                        <button class="prev">←</button>
+                        <button class="next">→</button>
+                    </div>
+                </div>
+
+                <div class="model-item">
+                    <h2>Cayenne</h2>
+                    <p>Masina sport impresionanta, cu pana la 5 locuri</p>
+                    <div class="fuel-buttons-container">
+                        <button class="fuel-buttons">Benzina</button>
+                        <button class="fuel-buttons">Hibrid</button>
+                    </div>
+                    <img src="./imagini/cayenne-lateral.webp">
+                    <p>De la 103.372,92$</p>
+                    <div class="next/prev">
+                        <button class="prev">←</button>
+                        <button class="next">→</button>
+                    </div>
+
+                </div>
             </div>
     </div>
+    <script>document.querySelectorAll('.next').forEach((button) => {
+            button.addEventListener('click', function () {
+                let modelItem = button.closest('.model-item');
+                let images = modelItem.querySelectorAll('.model-image');
+                let activeImage = modelItem.querySelector('.model-image.active');
+                let currentIndex = Array.from(images).indexOf(activeImage);
 
-    <!--Sprijin alegere model-->
+                // Ascunde imaginea activă
+                activeImage.classList.remove('active');
+
+                // Afișează imaginea următoare
+                let nextIndex = (currentIndex + 1) % images.length;
+                images[nextIndex].classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.prev').forEach((button) => {
+            button.addEventListener('click', function () {
+                let modelItem = button.closest('.model-item');
+                let images = modelItem.querySelectorAll('.model-image');
+                let activeImage = modelItem.querySelector('.model-image.active');
+                let currentIndex = Array.from(images).indexOf(activeImage);
+
+                // Ascunde imaginea activă
+                activeImage.classList.remove('active');
+
+                // Afișează imaginea anterioară
+                let prevIndex = (currentIndex - 1 + images.length) % images.length;
+                images[prevIndex].classList.add('active');
+            });
+        });
+</script>
+
+    <!--Rezerva un test-drive!-->
     <div class="choosing-model">
         <div class="text-content">
-            <h2>Aveti nevoie de sprijin in alegerea unui model?</h2>
-            <p>Comparati diferite modele pentru a va ajuta sa decideti ce masina de vis vi se potriveste cel mai bine.</p>
+            <h2>Aveti nevoie de sprijin in alegerea unui model? Rezervati un Test-Drive!</h2>
+            <p>Experienta Porsche este cu adevarat unica! Rezervati acum un test-drive pentru a simti performantele si luxul fiecarui
+            model Porsche.</p>
+            <p>Daca nu esti inca decis ce model te reprezinta, te invitam sa comparati mai multe modele.</p>
         </div>
-        <button class="comparare-modele">Compararea modelelor</button>
+        <button onclick="redirectToTestDrive()" class="comparare-modele">Rezerva un Test-Drive</button>
         <img src="./imagini/porsche_aveti_nevoie.png" alt="Compararea modelelor" height="100">
     </div>
 
@@ -128,6 +194,9 @@
     function redirectToExperientaPorsche() {
         window.location.href = './experienta_porsche.html';
     }
+    function redirectToTestDrive() {
+            window.location.href = './test_drive.html';
+        }
 </script>
 
     <!--Regiunea/Formular contact-->
@@ -147,7 +216,7 @@
     <div class="reg-form">
         <h3>PORSCHE</h3>
         <p>Toate drepturile rezervate</p>
-        <a href="Termeni&conditii">Termeni si conditii</a>
+        <a href="termeni_si_conditii.html">Termeni si conditii</a>
     </div>
 
 </body>
